@@ -99,6 +99,9 @@
 
   .eyebrow{font-family:var(--en);font-size:11.5px;letter-spacing:.3em;padding-left:.3em;color:var(--ink);white-space:nowrap}
   .asphodel{width:auto;height:min(34dvh,250px);max-width:100%;margin:3dvh 0 .6dvh}
+  .hero-art{display:block;width:auto;height:min(40dvh,330px);max-width:112%;margin:2.6dvh 0 0;user-select:none;-webkit-user-drag:none}
+  .foot-emb-wrap{display:flex;justify-content:center;margin-bottom:18px}
+  .foot-emb-wrap .asphodel{height:120px;margin:0}
   .flower-note{font-family:var(--en-it);font-style:italic;font-size:12px;letter-spacing:.06em;color:var(--ink-soft)}
   .flower-note b{font-family:var(--ko);font-style:normal;font-weight:300;font-size:10.5px;letter-spacing:.14em;margin-left:6px}
   .hair{width:36px;height:1px;background:#d8ccb4;margin:3.4dvh 0}   /* 포인트: 아이보리 골드 */
@@ -337,28 +340,8 @@
     <div class="content">
       <p class="eyebrow">THE WEDDING CELEBRATION</p>
 
-      <!-- 아스포델 블라인드 엠보싱 (잉크 없이 종이만 눌러 올린 느낌) -->
-      <svg class="asphodel" viewBox="0 0 200 330" aria-label="아스포델과 노송나무 엠보싱">
-        <defs>
-          <!-- 조각식(스컬프티드) 엠보싱: 높이맵 → 실제 조명 계산 → 밝은 면/그늘만 종이에 얹음 -->
-          <filter id="emboss" x="-8%" y="-6%" width="116%" height="112%" color-interpolation-filters="sRGB">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="0.95" result="h"/>
-            <feDiffuseLighting in="h" surfaceScale="2.4" diffuseConstant="1" lighting-color="#ffffff" result="L">
-              <feDistantLight azimuth="225" elevation="50"/>
-            </feDiffuseLighting>
-            <!-- 평면(sin50°=0.766)보다 밝은 곳 → 하이라이트 -->
-            <feColorMatrix in="L" type="matrix" result="hi"
-              values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.8 0 0 0 -1.42"/>
-            <!-- 평면보다 어두운 곳 → 부드러운 그늘 -->
-            <feColorMatrix in="L" type="matrix" result="sh"
-              values="0 0 0 0 0.24  0 0 0 0 0.22  0 0 0 0 0.20  -0.95 0 0 0 0.71"/>
-            <feFlood flood-color="#ffffff" flood-opacity="0.22"/>
-            <feComposite in2="SourceAlpha" operator="in" result="face"/>
-            <feMerge><feMergeNode in="sh"/><feMergeNode in="face"/><feMergeNode in="hi"/></feMerge>
-          </filter>
-        </defs>
-        <g id="asphodel-g" filter="url(#emboss)" fill="#000"></g>
-      </svg>
+      <!-- 흥인지문 앞의 두 사람 (보내준 그림 + 인트로 마지막 장면의 수채 흥인지문) -->
+      <img class="hero-art" id="heroArt" src="hero.webp" width="1200" height="1101" alt="흥인지문 앞에 나란히 앉은 신랑 신부 그림" decoding="async">
 
       <div class="hair"></div>
 
@@ -462,6 +445,30 @@
   </section>
 
   <footer class="foot">
+    <div class="foot-emb-wrap">
+      <!-- 아스포델 블라인드 엠보싱 (잉크 없이 종이만 눌러 올린 느낌) -->
+      <svg class="asphodel foot-emb" viewBox="0 0 200 330" aria-label="아스포델과 노송나무 엠보싱">
+        <defs>
+          <!-- 조각식(스컬프티드) 엠보싱: 높이맵 → 실제 조명 계산 → 밝은 면/그늘만 종이에 얹음 -->
+          <filter id="emboss" x="-8%" y="-6%" width="116%" height="112%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.95" result="h"/>
+            <feDiffuseLighting in="h" surfaceScale="2.4" diffuseConstant="1" lighting-color="#ffffff" result="L">
+              <feDistantLight azimuth="225" elevation="50"/>
+            </feDiffuseLighting>
+            <!-- 평면(sin50°=0.766)보다 밝은 곳 → 하이라이트 -->
+            <feColorMatrix in="L" type="matrix" result="hi"
+              values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.8 0 0 0 -1.42"/>
+            <!-- 평면보다 어두운 곳 → 부드러운 그늘 -->
+            <feColorMatrix in="L" type="matrix" result="sh"
+              values="0 0 0 0 0.24  0 0 0 0 0.22  0 0 0 0 0.20  -0.95 0 0 0 0.71"/>
+            <feFlood flood-color="#ffffff" flood-opacity="0.22"/>
+            <feComposite in2="SourceAlpha" operator="in" result="face"/>
+            <feMerge><feMergeNode in="sh"/><feMergeNode in="face"/><feMergeNode in="hi"/></feMerge>
+          </filter>
+        </defs>
+        <g id="asphodel-g" filter="url(#emboss)" fill="#000"></g>
+      </svg>
+    </div>
     <p class="ty">THANK YOU</p>
     <p class="nm">신동주 · 김신영</p>
     <div class="foot-btns">
@@ -877,6 +884,8 @@
 
   sizeSheet();
   /* 아스포델 엠보싱(조명 필터)도 한 번만 구워서 그림으로 교체 */
+  const heroImg = $('heroArt');
+  const heroReady = heroImg ? (heroImg.decode ? heroImg.decode().catch(() => 0) : 0) : 0;
   const asphReady = (async () => {
     const svg = document.querySelector('svg.asphodel'); if (!svg) return;
     const r = svg.getBoundingClientRect(); if (!r.height) return;
@@ -1068,7 +1077,7 @@
   $('copyLink').addEventListener('click', () => copy(location.href.split('#')[0], '청첩장 링크가 복사되었습니다'));
 
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) asphReady.then(showCard);
-  else Promise.all([document.fonts ? document.fonts.ready : 0, paperReady, washReady, asphReady]).then(play);
+  else Promise.all([document.fonts ? document.fonts.ready : 0, paperReady, washReady, asphReady, heroReady]).then(play);
 })();
 </script>
 </body>
