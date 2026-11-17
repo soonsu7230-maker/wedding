@@ -225,7 +225,6 @@
 .ways dt{font-size:13px;color:#6f6860;padding-top:1px;letter-spacing:.04em}
 
   /* RSVP */
-  #rsvpForm{text-align:left;margin-top:28px}
   .seg{display:flex;border:1px solid rgba(28,26,24,.16);margin-bottom:12px}
   .seg button{flex:1;min-height:46px;background:none;border:0;font-family:var(--ko);font-size:14px;letter-spacing:.06em;color:#8a8279;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent}
   .seg button+button{border-left:1px solid rgba(28,26,24,.12)}
@@ -278,39 +277,36 @@
     .foot-btns .btn{font-size:12px;padding:0 12px;letter-spacing:.06em}
   }
 
-  /* 참석 의사: 종이 회신 카드처럼 — 글자에 펜으로 동그라미, 밑줄 위에 적는 칸 */
-  #rsvpForm{text-align:left;margin-top:30px;border-top:1px solid rgba(28,26,24,.14);border-bottom:1px solid rgba(28,26,24,.14);padding:8px 2px 26px}
-  .rv-line{display:grid;grid-template-columns:58px 1fr;align-items:center;min-height:58px;border-bottom:1px dotted rgba(28,26,24,.16)}
-  .rv-line.hide{display:none}
-  #rsvpForm .rv-lb{display:block;margin:0;font-size:12.5px;letter-spacing:.14em;color:#8a8279}
-  #rsvpForm .rv-line.field{margin:0}
-  #rsvpForm .seg{display:flex;align-items:center;gap:6px;border:0;margin:0;flex-wrap:wrap}
-  #rsvpForm .seg button{flex:none;position:relative;min-height:40px;padding:0 12px;background:none;border:0;box-shadow:none;
-    font-family:var(--ko);font-size:15px;letter-spacing:.06em;color:#a49d93;cursor:pointer;transition:color .3s;-webkit-tap-highlight-color:transparent}
-  #rsvpForm .seg button+button{border-left:0}
-  #rsvpForm .seg button.on{background:none;box-shadow:none;color:var(--ink)}
-  #rsvpForm .seg button::after{content:'';position:absolute;inset:3px -3px 1px;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%2040'%20preserveAspectRatio='none'%3E%3Cpath%20d='M60%204.5%20C30%202.5%205%208%204%2020%20C3%2032%2030%2037.5%2055%2036.5%20C80%2035.5%2097%2029%2096%2018%20C95%208%2075%203%2045%204.5%20C38%205%2033%206%2029%207.2'%20fill='none'%20stroke='%23a3845a'%20stroke-width='1.3'%20stroke-linecap='round'%20vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat;
-    clip-path:inset(0 100% 0 0);transition:clip-path .55s cubic-bezier(.4,.1,.3,1)}
-  #rsvpForm .seg button.on::after{clip-path:inset(0 0 0 0)}
-  .rv-dot{font-style:normal;color:#cfc7bb}
-  #rsvpForm .seg[data-name=attend]{flex-direction:column;align-items:flex-start;gap:0;padding:6px 0}
-  .rv-line.field input{border:0;border-bottom:1px solid rgba(28,26,24,.3);background:transparent;padding:6px 4px 5px;margin-right:6px;
-    font-family:var(--ko);font-size:16px;color:var(--ink);border-radius:0;-webkit-appearance:none;width:calc(100% - 6px)}
-  .rv-line.field input:focus{outline:none;border-bottom-color:#a3845a}
-  #rsvpForm .stepper{display:flex;align-items:center;gap:2px;border:0}
-  #rsvpForm .stepper button{width:34px;height:36px;font-size:16px;color:#8a8279}
-  #rsvpForm .stepper output{min-width:22px;font-size:19px}
-  #rsvpForm .stepper em{font-style:normal;font-size:14px;margin:0 4px 0 2px;color:var(--ink)}
-  #rsvpForm .stepper small{font-size:11.5px;color:#a49d93;margin-left:8px;letter-spacing:.04em}
-  #rsvpForm .rv-msg{display:block;padding-top:16px;margin:0}
-  .rv-msg textarea{display:block;width:100%;margin-top:6px;border:0;padding:0 4px;background:transparent;resize:none;
-    font-family:var(--ko);font-size:15px;line-height:34px;height:102px;color:var(--ink);border-radius:0;-webkit-appearance:none;
-    background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 33px,rgba(28,26,24,.16) 33px,rgba(28,26,24,.16) 34px)}
-  .rv-msg textarea:focus{outline:none}
-  .rv-send{display:block;margin:26px auto 0;min-width:180px;min-height:46px;padding:0 28px;background:transparent;border:1px solid #2a2622;
-    font-family:var(--ko);font-size:14px;letter-spacing:.32em;text-indent:.32em;color:var(--ink);cursor:pointer;border-radius:0;-webkit-appearance:none;
-    transition:background .3s,color .3s}
-  .rv-send:active{background:#2a2622;color:#fbfaf7}
+  /* 참석 의사: 특급 호텔 회신 카드 — 가운데 정렬, 밑줄 위에 적고 아래에 작은 이름표, 작은 네모에 표시 */
+  .rc{margin:34px auto 0;max-width:290px;text-align:center}
+  .rc .hide{display:none}
+  .rc-field{margin:0 0 30px}
+  .rc-field input,.rc-field textarea{display:block;width:100%;border:0;border-bottom:1px solid rgba(28,26,24,.35);background:transparent;
+    padding:4px 2px 6px;text-align:center;font-family:var(--ko);font-size:16px;letter-spacing:.06em;color:var(--ink);border-radius:0;-webkit-appearance:none;resize:none}
+  .rc-field input:focus,.rc-field textarea:focus{outline:none;border-bottom-color:#a3845a}
+  .rc-field textarea{line-height:1.7;height:58px;padding-top:2px;
+    background-image:linear-gradient(to bottom,transparent 26px,rgba(28,26,24,.18) 26px,rgba(28,26,24,.18) 27px,transparent 27px)}
+  .rc-cap{display:block;margin-top:8px;font-size:11.5px;letter-spacing:.32em;text-indent:.32em;color:#8f887e}
+  .rc .seg{display:flex;justify-content:center;border:0;margin:0 0 26px}
+  .rc .seg button{position:relative;background:none;border:0;box-shadow:none;padding:6px 0 6px 18px;min-height:0;flex:none;
+    font-family:var(--ko);font-size:14.5px;letter-spacing:.08em;color:#8f887e;cursor:pointer;transition:color .3s;-webkit-tap-highlight-color:transparent}
+  .rc .seg button+button{border-left:0}
+  .rc .seg button::before{content:'';position:absolute;left:0;top:50%;width:8px;height:8px;margin-top:-4.5px;border:1px solid #9d958a;transition:background .3s,border-color .3s}
+  .rc .seg button.on{color:var(--ink);background:none;box-shadow:none}
+  .rc .seg button.on::before{background:#2a2622;border-color:#2a2622;box-shadow:inset 0 0 0 1.5px #fdfdfc}
+  .rc-side{gap:34px}
+  .rc-attend{flex-direction:column;align-items:center;gap:4px}
+  .rc-attend button{min-width:262px;text-align:left}
+  .rc-count{margin:-6px 0 32px;font-size:14px;letter-spacing:.08em;color:#5d574f}
+  .rc-sel{position:relative;display:inline-block;margin:0 4px}
+  .rc-sel select{-webkit-appearance:none;appearance:none;border:0;border-bottom:1px solid rgba(28,26,24,.35);border-radius:0;background:transparent;
+    padding:0 14px 2px 10px;font-family:var(--num);font-weight:500;font-size:18px;color:var(--ink);text-align:center;font-variant-numeric:lining-nums;cursor:pointer}
+  .rc-sel::after{content:'';position:absolute;right:2px;top:50%;width:4px;height:4px;margin-top:-4px;border-right:1px solid #8f887e;border-bottom:1px solid #8f887e;transform:rotate(45deg);pointer-events:none}
+  .rc-sel select:focus{outline:none;border-bottom-color:#a3845a}
+  .rc-msg{margin-top:4px}
+  .rc-send{display:inline-block;margin-top:8px;padding:12px 30px;background:transparent;border:0;border-top:1px solid #2a2622;border-bottom:1px solid #2a2622;
+    font-family:var(--ko);font-size:13.5px;letter-spacing:.42em;text-indent:.42em;color:var(--ink);cursor:pointer;border-radius:0;-webkit-appearance:none;transition:opacity .3s}
+  .rc-send:active{opacity:.55}
 </style>
 </head>
 <body class="grain">
@@ -465,16 +461,15 @@
     <h2 class="sec-ko">참석 의사 전달</h2>
     <div class="sec-hair"></div>
     <p class="body-text small">귀한 걸음 하시는 분들을 정성껏 모실 수 있도록<br>참석 여부를 미리 알려주시면<br>감사하겠습니다.</p>
-    <form id="rsvpForm" novalidate>
-      <div class="rv-line"><span class="rv-lb">구분</span>
-        <div class="seg" data-name="side"><button type="button" data-v="신랑측" class="on">신랑 측</button><i class="rv-dot">·</i><button type="button" data-v="신부측">신부 측</button></div></div>
-      <label class="rv-line field"><span class="rv-lb">성함</span><input name="name" maxlength="20" autocomplete="name"></label>
-      <div class="rv-line"><span class="rv-lb">참석</span>
-        <div class="seg" data-name="attend"><button type="button" data-v="참석" class="on">참석합니다</button><button type="button" data-v="불참">마음만 전합니다</button></div></div>
-      <div class="rv-line attend-only"><span class="rv-lb">인원</span>
-        <div class="stepper"><button type="button" data-d="-1" aria-label="인원 줄이기">−</button><output id="cnt">1</output><em>명</em><button type="button" data-d="1" aria-label="인원 늘리기">+</button><small>본인 포함</small></div></div>
-      <label class="rv-msg field"><span class="rv-lb">전하실 말씀</span><textarea name="msg" maxlength="200" rows="3"></textarea></label>
-      <button class="rv-send" type="submit" id="rsvpBtn">회신 보내기</button>
+    <form id="rsvpForm" class="rc" novalidate>
+      <div class="rc-field"><input name="name" maxlength="20" autocomplete="name" aria-label="성함"><span class="rc-cap">성함</span></div>
+      <div class="seg rc-side" data-name="side"><button type="button" data-v="신랑측" class="on">신랑 측</button><button type="button" data-v="신부측">신부 측</button></div>
+      <div class="seg rc-attend" data-name="attend">
+        <button type="button" data-v="참석" class="on">기쁜 마음으로 참석하겠습니다</button>
+        <button type="button" data-v="불참">아쉽지만 마음으로 함께하겠습니다</button></div>
+      <div class="rc-count attend-only">본인 포함 <label class="rc-sel"><select id="cntSel" aria-label="참석 인원"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></label> 명</div>
+      <div class="rc-field rc-msg"><textarea name="msg" maxlength="200" rows="2" aria-label="전하실 말씀"></textarea><span class="rc-cap">전하실 말씀</span></div>
+      <button class="rc-send" type="submit" id="rsvpBtn">회신 보내기</button>
       <p class="form-note" id="rsvpNote"></p>
     </form>
   </section>
@@ -1080,10 +1075,7 @@
       seg.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
       if (seg.dataset.name === 'attend') f.querySelectorAll('.attend-only').forEach(el => el.classList.toggle('hide', b.dataset.v !== '참석'));
     }));
-    f.querySelector('.stepper').addEventListener('click', e => {
-      const b = e.target.closest('button'); if (!b) return;
-      count = Math.min(10, Math.max(1, count + +b.dataset.d)); $('cnt').textContent = count;
-    });
+    $('cntSel').addEventListener('change', e => { count = +e.target.value || 1; });
     let done = false; try { done = localStorage.getItem('rsvp-sent') === '1'; } catch(e){}
     if (done) note.textContent = '이미 참석 의사를 전해 주셨어요. 다시 보내셔도 괜찮습니다.';
     f.addEventListener('submit', async e => {
