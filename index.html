@@ -129,7 +129,7 @@
   /* 섹션은 같은 종이 위에 이어서 — 사이에는 작은 장식 하나만 */
   .insert{position:relative;text-align:center;padding:34px 36px 64px}
   /* 섹션 사이 표식: 나무기러기 한 쌍 (호두나무 목안, 마주 봄) — goose.webp */
-  .insert::before{content:'';position:absolute;top:0;left:50%;width:44px;height:12px;transform:translate(-50%,-50%);
+  .insert::before{content:'';position:absolute;top:0;left:50%;width:32px;height:9px;transform:translate(-50%,-50%);
     background:url("goose.webp") center/contain no-repeat}
   .reveal{opacity:0;transform:translateY(10px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
@@ -437,8 +437,6 @@
       <div class="seg" data-name="attend"><button type="button" data-v="참석" class="on">참석할게요</button><button type="button" data-v="불참">마음만 전할게요</button></div>
       <div class="row attend-only"><span>인원 (본인 포함)</span>
         <div class="stepper"><button type="button" data-d="-1" aria-label="인원 줄이기">−</button><output id="cnt">1</output><button type="button" data-d="1" aria-label="인원 늘리기">+</button></div></div>
-      <p class="field-lb attend-only">식사 여부</p>
-      <div class="seg attend-only" data-name="meal"><button type="button" data-v="식사 예정" class="on">식사 예정</button><button type="button" data-v="식사 안 함">안 함</button><button type="button" data-v="미정">미정</button></div>
       <label class="field"><span>전하실 말씀 (선택)</span><textarea name="msg" maxlength="200" rows="3"></textarea></label>
       <button class="btn solid" type="submit" id="rsvpBtn">전달하기</button>
       <p class="form-note" id="rsvpNote"></p>
@@ -1058,7 +1056,7 @@
       if (!name){ note.textContent = '성함을 입력해 주세요'; note.classList.add('err'); f.name.focus(); return; }
       const attend = val('attend');
       const data = { side: val('side'), name, attend, count: attend === '참석' ? count : 0,
-                     meal: attend === '참석' ? val('meal') : '-', msg: f.msg.value.trim(), at: new Date().toISOString() };
+                     msg: f.msg.value.trim(), at: new Date().toISOString() };
       note.classList.remove('err');
       if (!CONFIG.rsvpEndpoint){ note.innerHTML = '<span class="todo">(테스트) 아직 저장할 시트가 연결되지 않았어요</span>'; console.log('RSVP', data); return; }
       $('rsvpBtn').disabled = true; note.textContent = '전달하는 중…';
