@@ -67,7 +67,7 @@
   .page{position:relative;width:min(calc(100vw - 32px),400px);margin:24px auto calc(40px + env(safe-area-inset-bottom));
     background:#fdfdfc;box-shadow:0 1px 2px rgba(40,36,30,.08), 0 12px 28px rgba(40,36,30,.10)}
   .page::before{content:'';position:absolute;inset:16px;pointer-events:none;z-index:1;
-    box-shadow:inset 1px 1px 1.5px rgba(50,45,38,.16), inset -1px -1px 0 #fff, 1px 1px 0 #fff, -.5px -.5px 0 rgba(50,45,38,.09)}
+    border:1px solid rgba(50,45,38,.11);box-shadow:inset 0 0 0 3px #fdfdfc, inset 0 0 0 3.5px rgba(50,45,38,.05)}
   .page::after{content:'';position:absolute;inset:0;pointer-events:none;border:1px solid rgba(40,36,30,.07)}
   .page-photo{background-size:100% auto;background-repeat:repeat-y;background-position:top center}
   #scene.grain{background-color:#f8f8f6}   /* 카드 뒤: 중립 라이트 그레이 (아이보리 X) */
@@ -79,8 +79,7 @@
 
   /* 블라인드 디보싱 플레이트 마크 */
   .plate{position:absolute;inset:16px;border-radius:1px;pointer-events:none;
-    box-shadow:inset 1px 1px 1.5px rgba(50,45,38,.16), inset -1px -1px 0 rgba(255,255,255,1),
-               1px 1px 0 rgba(255,255,255,1), -0.5px -0.5px 0 rgba(50,45,38,.09)}
+    border:1px solid rgba(50,45,38,.11);box-shadow:inset 0 0 0 3px #fdfdfc, inset 0 0 0 3.5px rgba(50,45,38,.05)}
   /* 포인트: 하단 아이보리 띠 (봉투 안지처럼 살짝) */
   .ivory-band{position:absolute;left:16px;right:16px;bottom:16px;height:3px;background:var(--ivory);opacity:.9;z-index:1}
   .content{position:absolute;inset:16px;display:flex;flex-direction:column;align-items:center;
@@ -130,7 +129,7 @@
   /* 섹션은 같은 종이 위에 이어서 — 사이에는 작은 장식 하나만 */
   .insert{position:relative;text-align:center;padding:34px 36px 64px}
   /* 섹션 사이 표식: 나무기러기 한 쌍 (호두나무 목안, 마주 봄) — goose.webp */
-  .insert::before{content:'';position:absolute;top:0;left:50%;width:64px;height:17px;transform:translate(-50%,-50%);
+  .insert::before{content:'';position:absolute;top:0;left:50%;width:44px;height:12px;transform:translate(-50%,-50%);
     background:url("goose.webp") center/contain no-repeat}
   .reveal{opacity:0;transform:translateY(10px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
