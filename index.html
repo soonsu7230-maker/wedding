@@ -131,7 +131,7 @@
   .reveal{opacity:0;transform:translateY(10px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   .sec-en{font-family:var(--en);font-size:12px;letter-spacing:.4em;padding-left:.4em;color:var(--ink-soft)}
-  .sec-ko{font-family:var(--ko);font-weight:400;font-size:19px;letter-spacing:.14em;margin-top:10px;color:var(--ink)}
+  .sec-ko{font-family:var(--ko);font-weight:400;font-size:20px;letter-spacing:.14em;color:var(--ink)}
   .sec-hair{width:36px;height:1px;background:#d8ccb4;margin:22px auto 28px}
   .body-text{font-size:15px;line-height:2.05;letter-spacing:.02em;color:#2a2622;word-break:keep-all}
   .body-text.small{font-size:14px;line-height:1.9;color:#4f4942}
@@ -139,6 +139,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;margin-top:26px;
     border:1px solid rgba(28,26,24,.28);background:transparent;color:var(--ink);font-family:var(--ko);font-size:13.5px;
     letter-spacing:.1em;text-decoration:none;cursor:pointer;border-radius:0;-webkit-appearance:none}
+  .btn-sm{min-height:38px;padding:0 18px;margin-top:20px;font-size:13px}
   .btn.solid{background:#1c1a18;color:#fff;border-color:#1c1a18;width:100%}
   .btn:active,.map-btns a:active,.acct button:active{opacity:.6}
 
@@ -149,12 +150,12 @@
 
   /* 예식 일시 · 달력 */
   .day-line{font-size:16px;letter-spacing:.06em}
-  .day-sub{font-size:14px;color:#4f4942;margin-top:6px;letter-spacing:.05em}
-  .cal-head{font-family:var(--num);font-weight:500;font-size:16px;letter-spacing:.3em;padding-left:.3em;margin:34px 0 14px;color:var(--ink);font-variant-numeric:lining-nums}
+  .day-sub{font-size:14px;color:#4f4942;margin-top:8px;letter-spacing:.05em;line-height:1.75;word-break:keep-all}
+  .cal-head{font-family:var(--ko);font-size:16px;letter-spacing:.14em;padding-left:.14em;margin:34px 0 14px;color:var(--ink)}
   .cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px;padding:6px 0 10px;
     border-top:1px solid rgba(28,26,24,.12);border-bottom:1px solid rgba(28,26,24,.12);
     font-family:var(--num);font-weight:500;font-size:17px;color:#2a2622;font-variant-numeric:lining-nums tabular-nums}
-  .cal .dow{font-size:12px;font-weight:600;letter-spacing:.12em;color:#6f6860;padding:10px 0 8px}
+  .cal .dow{font-family:var(--ko);font-size:12.5px;letter-spacing:0;color:#6f6860;padding:10px 0 8px}
   .cal .d{height:42px;display:flex;align-items:center;justify-content:center;position:relative;z-index:0}
   .cal .sun{color:#a8564a}
   .cal .past{opacity:.28}
@@ -183,7 +184,10 @@
   /* 오시는 길 */
   .venue-name{font-size:17px;letter-spacing:.06em}
   .venue-hall{display:inline-block;font-size:14px;margin-top:8px}
-  .venue-addr{font-size:14.5px;color:#4f4942;margin-top:12px}
+  .venue-addr{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:6px 4px;background:none;border:0;cursor:pointer;
+    font-family:var(--ko);font-size:14.5px;color:#4f4942;-webkit-tap-highlight-color:transparent}
+  .copy-ico{width:14px;height:14px;fill:none;stroke:#8a8178;stroke-width:1.2;stroke-linejoin:round;flex:none}
+  .venue-addr:active{opacity:.55}
   .venue-tel{font-family:var(--num);font-weight:500;font-size:16px;letter-spacing:.08em;margin-top:6px;font-variant-numeric:lining-nums}
   .venue-tel a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(28,26,24,.2)}
   .loc-art{margin:26px auto 0;width:86%}
@@ -354,7 +358,6 @@
 
   <!-- ① 모시는 글 -->
   <section class="insert reveal" id="invite">
-    <p class="sec-en">INVITATION</p>
     <h2 class="sec-ko">모시는 글</h2>
     <div class="sec-hair"></div>
     <p class="body-text">
@@ -373,19 +376,17 @@
 
   <!-- ② 예식 일시 · 달력 · D-day -->
   <section class="insert reveal" id="theday">
-    <p class="sec-en">THE DAY</p>
     <h2 class="sec-ko">예식 일시</h2>
     <div class="sec-hair"></div>
     <p class="day-line">2027년 2월 21일 일요일 오후 1시</p>
-    <p class="day-sub">JW 메리어트 동대문 스퀘어 서울</p>
-    <p class="cal-head">FEBRUARY 2027</p>
+    <p class="day-sub">JW 메리어트 동대문 스퀘어 서울<br>B1층 그랜드 볼룸</p>
+    <a class="btn btn-sm" id="gcal" target="_blank" rel="noopener">캘린더에 추가하기</a>
+    <p class="cal-head">2027년 2월</p>
     <div class="cal" id="cal"></div>
-    <a class="btn" id="gcal" target="_blank" rel="noopener">캘린더에 추가하기</a>
   </section>
 
   <!-- ③ 갤러리 -->
   <section class="insert reveal" id="gallery">
-    <p class="sec-en">GALLERY</p>
     <h2 class="sec-ko">우리의 순간</h2>
     <div class="sec-hair"></div>
     <div class="grid" id="grid"></div>
@@ -394,13 +395,12 @@
 
   <!-- ④ 오시는 길 -->
   <section class="insert reveal" id="location">
-    <p class="sec-en">LOCATION</p>
     <h2 class="sec-ko">오시는 길</h2>
     <div class="sec-hair"></div>
     <p class="venue-name">JW 메리어트 동대문 스퀘어 서울</p>
     <p class="venue-hall todo" id="venueHall">○층 ○○홀</p>
-    <p class="venue-addr">서울 종로구 청계천로 279</p>
-    <p class="venue-tel"><a href="tel:0222763000">02-2276-3000</a></p>
+    <button type="button" class="venue-addr" id="copyAddr" aria-label="주소 복사하기: 서울 종로구 청계천로 279">서울 종로구 청계천로 279<svg class="copy-ico" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8.5" rx="1.2"/><path d="M10.5 5.5V3.2c0-.66-.54-1.2-1.2-1.2H3.7c-.66 0-1.2.54-1.2 1.2v6.6c0 .66.54 1.2 1.2 1.2h1.8"/></svg></button>
+    <p class="venue-tel" style="margin-top:2px"><a href="tel:0222763000">02-2276-3000</a></p>
     <div class="loc-art"><svg viewBox="40 90 280 145" aria-hidden="true"><path id="locGate" fill="none" stroke="#2a2622" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
     <p class="loc-cap">흥인지문 바로 맞은편에 있습니다</p>
     <div class="map-btns">
@@ -408,9 +408,8 @@
       <a id="mapKakao" target="_blank" rel="noopener">카카오맵</a>
       <a id="mapTmap">티맵</a>
     </div>
-    <button class="btn" type="button" id="copyAddr">주소 복사하기</button>
     <dl class="ways">
-      <div><dt>지하철</dt><dd>1·4호선 <b style="font-weight:400">동대문역</b> 하차<br><span class="todo">출구 번호 · 도보 시간 확인 후 기입</span></dd></div>
+      <div><dt>지하철</dt><dd>1·4호선 <b style="font-weight:400">동대문역</b> 하차<br>1호선 동대문역과 호텔이 바로 연결되어 있습니다<br><span class="todo">출구 번호 · 도보 시간 확인 후 기입</span></dd></div>
       <div><dt>버스</dt><dd><span class="todo">동대문 정류장 하차 노선 확인 후 기입</span></dd></div>
       <div><dt>주차</dt><dd>호텔 내 주차 가능<br><span class="todo">하객 무료 주차 시간 확인 후 기입</span></dd></div>
     </dl>
@@ -418,7 +417,6 @@
 
   <!-- ⑤ 참석 의사 (RSVP) -->
   <section class="insert reveal" id="rsvp">
-    <p class="sec-en">R.S.V.P</p>
     <h2 class="sec-ko">참석 의사 전달</h2>
     <div class="sec-hair"></div>
     <p class="body-text small">귀한 걸음 하시는 분들을 정성껏 모실 수 있도록<br>참석 여부를 미리 알려주시면 감사하겠습니다.</p>
@@ -437,7 +435,6 @@
 
   <!-- ⑥ 마음 전하실 곳 -->
   <section class="insert reveal" id="gift">
-    <p class="sec-en">WITH LOVE</p>
     <h2 class="sec-ko">마음 전하실 곳</h2>
     <div class="sec-hair"></div>
     <p class="body-text small">참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
@@ -877,7 +874,7 @@
   const CONFIG = {
     groomParents: '',            // 예: '신○○ · 이○○'
     brideParents: '',            // 예: '김○○ · 박○○'
-    hall: '',                    // 예: '2층 그랜드 볼룸'
+    hall: 'B1층 그랜드 볼룸',
     gallery: [],                 // 예: ['photos/01.jpg', 'photos/02.jpg', ...] (첫 장이 크게 보임)
     rsvpEndpoint: '',            // Google Apps Script 웹 앱 주소 (rsvp-apps-script.gs 참고)
     accounts: {
@@ -919,7 +916,7 @@
     const now = new Date(), kst = new Date(now.getTime() + 9*3600e3);
     const todayUTC = Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate());
     const wDay = Date.UTC(2027, 1, 21);
-    let h = ['S','M','T','W','T','F','S'].map((d,i) => `<div class="dow${i===0?' sun':''}">${d}</div>`).join('');
+    let h = ['일','월','화','수','목','금','토'].map((d,i) => `<div class="dow${i===0?' sun':''}">${d}</div>`).join('');
     const first = new Date(Date.UTC(2027, 1, 1)).getUTCDay();
     for (let i = 0; i < first; i++) h += '<div></div>';
     for (let d = 1; d <= 28; d++){
@@ -931,7 +928,7 @@
     }
     $('cal').innerHTML = h;
     const q = new URLSearchParams({ action:'TEMPLATE', text:'신동주 ♥ 김신영 결혼식', dates:'20270221T040000Z/20270221T060000Z',
-      location:'JW 메리어트 동대문 스퀘어 서울 (' + CONFIG.address + ')', details:'저희의 시작을 함께해 주세요.\n' + location.href.split('#')[0] });
+      location:'JW 메리어트 동대문 스퀘어 서울 B1층 그랜드 볼룸 (' + CONFIG.address + ')', details:'저희의 시작을 함께해 주세요.\n' + location.href.split('#')[0] });
     $('gcal').href = 'https://calendar.google.com/calendar/render?' + q.toString();
   })();
 
