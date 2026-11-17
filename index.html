@@ -182,7 +182,11 @@
     font-family:var(--num);font-weight:500;letter-spacing:.24em;font-size:13px}
 
   /* 오시는 길 */
-  .venue-name{font-size:17px;letter-spacing:.06em}
+  .venue-name{font-size:17px;letter-spacing:.06em;display:inline-flex;align-items:center;justify-content:center}
+  .tel-ico{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin:-6px -8px -6px 2px;
+    -webkit-tap-highlight-color:transparent}
+  .tel-ico svg{width:14px;height:14px;fill:none;stroke:#8a8178;stroke-width:1.2;stroke-linejoin:round}
+  .tel-ico:active{opacity:.55}
   .venue-hall{display:inline-block;font-size:14px;margin-top:8px}
   .venue-addr{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:6px 4px;background:none;border:0;cursor:pointer;
     font-family:var(--ko);font-size:14.5px;color:#4f4942;-webkit-tap-highlight-color:transparent}
@@ -397,10 +401,9 @@
   <section class="insert reveal" id="location">
     <h2 class="sec-ko">오시는 길</h2>
     <div class="sec-hair"></div>
-    <p class="venue-name">JW 메리어트 동대문 스퀘어 서울</p>
+    <p class="venue-name">JW 메리어트 동대문 스퀘어 서울<a class="tel-ico" href="tel:02-2276-3000" aria-label="호텔에 전화하기 02-2276-3000"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.3 2.3H3.8c-.7 0-1.3.6-1.2 1.3.4 5.2 4.6 9.4 9.8 9.8.7.1 1.3-.5 1.3-1.2v-1.5c0-.4-.3-.8-.7-.9l-2-.6c-.4-.1-.8 0-1 .3l-.6.8c-1.6-.8-2.9-2.1-3.7-3.7l.8-.6c.3-.2.4-.6.3-1l-.6-2c-.1-.4-.5-.7-.9-.7z"/></svg></a></p>
     <p class="venue-hall todo" id="venueHall">○층 ○○홀</p>
     <button type="button" class="venue-addr" id="copyAddr" aria-label="주소 복사하기: 서울 종로구 청계천로 279">서울 종로구 청계천로 279<svg class="copy-ico" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8.5" rx="1.2"/><path d="M10.5 5.5V3.2c0-.66-.54-1.2-1.2-1.2H3.7c-.66 0-1.2.54-1.2 1.2v6.6c0 .66.54 1.2 1.2 1.2h1.8"/></svg></button>
-    <p class="venue-tel" style="margin-top:2px"><a href="tel:0222763000">02-2276-3000</a></p>
     <div class="loc-art"><svg viewBox="40 90 280 145" aria-hidden="true"><path id="locGate" fill="none" stroke="#2a2622" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
     <p class="loc-cap">흥인지문 바로 맞은편에 있습니다</p>
     <div class="map-btns">
