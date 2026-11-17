@@ -84,7 +84,7 @@
   /* 포인트: 하단 아이보리 띠 (봉투 안지처럼 살짝) */
   .ivory-band{position:absolute;left:16px;right:16px;bottom:16px;height:3px;background:var(--ivory);opacity:.9;z-index:1}
   .content{position:absolute;inset:16px;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;text-align:center;padding:24px 22px 84px}
+    justify-content:center;text-align:center;padding:40px 22px 84px}
   .content > *{opacity:0;transform:translateY(6px);transition:opacity 1.1s ease, transform 1.1s ease}
   .shown .content > *{opacity:1;transform:none}
   .shown .content > *:nth-child(2){transition-delay:.15s}
@@ -99,12 +99,12 @@
 
   .eyebrow{font-family:var(--en);font-size:11.5px;letter-spacing:.3em;padding-left:.3em;color:var(--ink);white-space:nowrap}
   .asphodel{width:auto;height:min(34dvh,250px);max-width:100%;margin:3dvh 0 .6dvh}
-  .hero-art{display:block;width:auto;height:min(40dvh,330px);max-width:112%;margin:2.6dvh 0 0;user-select:none;-webkit-user-drag:none}
+  .hero-art{display:block;width:auto;height:min(30dvh,250px);max-width:104%;margin:min(3.2dvh,26px) 0 0;user-select:none;-webkit-user-drag:none}
   .foot-emb-wrap{display:flex;justify-content:center;margin-bottom:18px}
   .foot-emb-wrap .asphodel{height:120px;margin:0}
   .flower-note{font-family:var(--en-it);font-style:italic;font-size:12px;letter-spacing:.06em;color:var(--ink-soft)}
   .flower-note b{font-family:var(--ko);font-style:normal;font-weight:300;font-size:10.5px;letter-spacing:.14em;margin-left:6px}
-  .hair{width:36px;height:1px;background:#d8ccb4;margin:3.4dvh 0}   /* 포인트: 아이보리 골드 */
+  .hair{width:36px;height:1px;background:#d8ccb4;margin:min(3.4dvh,26px) 0}   /* 포인트: 아이보리 골드 */
   .mono{font-family:var(--en);font-weight:500;font-size:15px;letter-spacing:.34em;padding-left:.34em}
   .amp{font-family:var(--en-it);font-style:italic;font-weight:400;padding:0 .15em;
     background:linear-gradient(115deg,var(--gold-3) 0%,var(--gold-1) 35%,var(--gold-2) 50%,var(--gold-1) 65%,var(--gold-3) 100%);
@@ -120,7 +120,7 @@
   .venue{font-family:var(--ko);font-weight:400;font-size:14.5px;letter-spacing:.1em;margin-top:8px;color:var(--ink)}
   /* 표지 아래 스크롤 안내 */
   .scroll-hint{position:absolute;left:0;right:0;bottom:24px;text-align:center;pointer-events:none;
-    font-family:var(--en);font-size:10px;letter-spacing:.42em;padding-left:.42em;color:var(--ink-soft);opacity:0;transition:opacity 1s 2.2s}
+    font-family:var(--en);font-size:10px;letter-spacing:.42em;text-indent:.42em;color:var(--ink-soft);opacity:0;transition:opacity 1s 2.2s}
   .shown .scroll-hint{opacity:.85}
   .scroll-hint i{display:block;width:1px;height:24px;margin:9px auto 0;background:var(--ink-soft);transform-origin:top;animation:drip 2.2s ease-in-out infinite}
   @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}
@@ -373,7 +373,7 @@
     <div class="sec-hair"></div>
     <p class="body-text">
       2017년 겨울, 처음 마주한 두 사람이<br>
-      함께한 지 3,683일째 되는 날<br>
+      함께한 지 10년하고 30일 되는 날<br>
       평생을 약속하려 합니다.<br><br>
       그 시작의 자리에<br>
       귀한 걸음으로 함께해 주시면<br>
