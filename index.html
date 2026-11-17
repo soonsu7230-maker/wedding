@@ -136,19 +136,19 @@
   .sec-en{font-family:var(--en);font-size:12px;letter-spacing:.4em;padding-left:.4em;color:var(--ink-soft)}
   .sec-ko{font-family:var(--ko);font-weight:400;font-size:20px;letter-spacing:.14em;color:var(--ink)}
   .sec-hair{width:36px;height:1px;background:#d8ccb4;margin:22px auto 28px}
-  .body-text{font-size:15px;line-height:2.05;letter-spacing:.02em;color:#2a2622;word-break:keep-all}
+  .body-text{font-size:15px;line-height:2.05;letter-spacing:.02em;color:#2a2622;word-break:keep-all;text-wrap:balance}
   .body-text.small{font-size:14px;line-height:1.9;color:#4f4942}
   .todo{color:#a3845a;border-bottom:1px dashed #cdb48c}
   .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;margin-top:26px;
     border:1px solid rgba(28,26,24,.28);background:transparent;color:var(--ink);font-family:var(--ko);font-size:13.5px;
     letter-spacing:.1em;text-decoration:none;cursor:pointer;border-radius:0;-webkit-appearance:none}
   .btn-sm{min-height:38px;padding:0 18px;margin-top:20px;font-size:13px}
-  .btn.solid{background:#1c1a18;color:#fff;border-color:#1c1a18;width:100%}
+  .btn.solid{background:#2a2622;color:#fbfaf7;border-color:#2a2622;width:100%;min-height:50px;letter-spacing:.24em;padding-left:calc(22px + .24em)}
   .btn:active,.map-btns a:active,.acct button:active{opacity:.6}
 
   /* 모시는 글 */
   .parents{margin-top:32px;font-size:15px;line-height:2.3}
-  .parents em{font-style:normal;color:var(--ink-soft);font-size:13px;margin:0 8px 0 4px}
+  .parents em{font-style:normal;color:var(--ink-soft);font-size:13px;margin:0 9px 0 1px}
   .parents b{font-weight:400;font-size:16.5px;letter-spacing:.14em}
 
   /* 예식 일시 · 달력 */
@@ -171,7 +171,7 @@
   .dday-text b{color:var(--ink);font-weight:400}
 
   /* 갤러리 */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px;margin:0 -6px;align-items:start}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px;align-items:start}
   .grid .ph{position:relative;aspect-ratio:3/4;background:#f1efea center/cover no-repeat;border:0;padding:0;cursor:pointer;
     -webkit-tap-highlight-color:transparent;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s}
   .grid .ph:nth-child(3n+1){grid-column:1/-1;aspect-ratio:4/5}
@@ -195,13 +195,13 @@
     font-family:var(--num);font-weight:500;letter-spacing:.24em;font-size:13px}
 
   /* 오시는 길 */
-  .venue-name{font-size:17px;letter-spacing:.06em;display:inline-flex;align-items:center;justify-content:center}
+  .venue-name{font-size:clamp(15px,4.2vw,17px);letter-spacing:.03em;display:inline-flex;align-items:center;justify-content:center;padding-left:22px;white-space:nowrap}
   .tel-ico{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin:-6px -8px -6px 2px;
     -webkit-tap-highlight-color:transparent}
   .tel-ico svg{width:14px;height:14px;fill:none;stroke:#8a8178;stroke-width:1.2;stroke-linejoin:round}
   .tel-ico:active{opacity:.55}
   .venue-hall{display:inline-block;font-size:14px;margin-top:8px}
-  .venue-addr{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:6px 4px;background:none;border:0;cursor:pointer;
+  .venue-addr{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:6px 4px 6px 25px;background:none;border:0;cursor:pointer;
     font-family:var(--ko);font-size:14.5px;color:#4f4942;-webkit-tap-highlight-color:transparent}
   .copy-ico{width:14px;height:14px;fill:none;stroke:#8a8178;stroke-width:1.2;stroke-linejoin:round;flex:none}
   .venue-addr:active{opacity:.55}
@@ -218,22 +218,26 @@
   .ways{text-align:left;margin-top:30px;border-top:1px solid rgba(28,26,24,.1)}
   .ways > div{display:grid;grid-template-columns:58px 1fr;gap:8px;padding:15px 2px;border-bottom:1px solid rgba(28,26,24,.1);
     font-size:14px;line-height:1.8;word-break:keep-all}
+  .ways .bus{display:flex;gap:10px;white-space:nowrap}
+  .ways .bus > span:first-child{flex:none;color:#6f6860;font-size:13px;padding-top:1px}
   .ways .sub{font-size:12.5px;color:#8a8279}
 .ways dt{font-size:13px;color:#6f6860;padding-top:1px;letter-spacing:.04em}
 
   /* RSVP */
   #rsvpForm{text-align:left;margin-top:28px}
-  .seg{display:flex;border:1px solid rgba(28,26,24,.2);margin-bottom:12px}
-  .seg button{flex:1;min-height:44px;background:none;border:0;font-family:var(--ko);font-size:14px;color:var(--ink-soft);cursor:pointer}
-  .seg button+button{border-left:1px solid rgba(28,26,24,.2)}
-  .seg button.on{background:#1c1a18;color:#fff}
+  .seg{display:flex;border:1px solid rgba(28,26,24,.16);margin-bottom:12px}
+  .seg button{flex:1;min-height:46px;background:none;border:0;font-family:var(--ko);font-size:14px;letter-spacing:.06em;color:#8a8279;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s;-webkit-tap-highlight-color:transparent}
+  .seg button+button{border-left:1px solid rgba(28,26,24,.12)}
+  .seg button.on{background:#f5f1ea;color:var(--ink);box-shadow:inset 0 0 0 1px #3a342e}
   .field{display:block;margin-bottom:12px}
+  .field-lb{text-align:left;font-size:13px;color:#5d574f;margin:16px 0 6px;letter-spacing:.04em}
+  .field-lb.hide{display:none}
   .field span{display:block;font-size:13px;color:#5d574f;margin-bottom:6px;letter-spacing:.04em}
-  .field input,.field textarea{width:100%;border:1px solid rgba(28,26,24,.2);background:#fff;padding:12px;font-family:var(--ko);
+  .field input,.field textarea{width:100%;border:1px solid rgba(28,26,24,.16);background:rgba(255,255,255,.55);padding:12px 13px;font-family:var(--ko);
     font-size:16px;color:var(--ink);border-radius:0;-webkit-appearance:none;resize:none}
   .field input:focus,.field textarea:focus{outline:none;border-color:#1c1a18}
   .row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:14px;color:var(--ink-soft)}
-  .stepper{display:flex;align-items:center;border:1px solid rgba(28,26,24,.2)}
+  .stepper{display:flex;align-items:center;border:1px solid rgba(28,26,24,.16)}
   .stepper button{width:44px;height:42px;background:none;border:0;font-size:18px;cursor:pointer;color:var(--ink)}
   .stepper output{min-width:34px;text-align:center;font-family:var(--num);font-weight:500;font-size:19px;color:var(--ink);font-variant-numeric:lining-nums}
   .attend-only.hide{display:none}
@@ -261,10 +265,17 @@
   .foot .ty{font-family:var(--en);font-size:13px;letter-spacing:.42em;padding-left:.42em;color:var(--ink-soft)}
   .foot .nm{font-size:14px;letter-spacing:.22em;margin-top:12px}
   .foot-btns{display:flex;gap:8px;justify-content:center;margin-top:26px}
+  .foot-btns .btn{white-space:nowrap}
   .foot-btns .btn{margin-top:0;min-height:40px;font-size:12.5px;padding:0 16px}
   #toast{position:fixed;left:50%;bottom:calc(32px + env(safe-area-inset-bottom));transform:translate(-50%,10px);background:#1c1a18;color:#fff;
     font-size:13px;padding:11px 18px;opacity:0;transition:opacity .3s, transform .3s;z-index:40;pointer-events:none;letter-spacing:.04em;white-space:nowrap}
   #toast.on{opacity:.94;transform:translate(-50%,0)}
+  @media (max-width:374px){
+    .insert{padding-left:26px;padding-right:26px}
+    .ways > div{grid-template-columns:46px 1fr;font-size:13.5px}
+    .ways .sub{font-size:12px}
+    .foot-btns .btn{font-size:12px;padding:0 12px;letter-spacing:.06em}
+  }
 </style>
 </head>
 <body class="grain">
@@ -410,7 +421,7 @@
     </div>
     <dl class="ways">
       <div><dt>지하철</dt><dd>1·4호선 <b style="font-weight:400">동대문역</b> 8번 출구<br>도보 1~2분, 바로 앞입니다<br><span class="sub">2·4·5호선 동대문역사문화공원역<br>도보 약 10분</span></dd></div>
-      <div><dt>버스</dt><dd><b style="font-weight:400">동대문역.흥인지문</b> 정류장 하차<br>간선 101 · 103 · 105 · 111 · 144<br>　　 152 · 201 · 260 · 261<br>지선 2112 · 2233<br><span class="sub">공항버스 6001<br>종로6가(JW메리어트 동대문) 하차</span></dd></div>
+      <div><dt>버스</dt><dd><b style="font-weight:400">동대문역.흥인지문</b> 정류장 하차<span class="bus"><span>간선</span><span>101 · 103 · 105 · 111 · 144<br>152 · 201 · 260 · 261</span></span><span class="bus"><span>지선</span><span>2112 · 2233</span></span><span class="sub">공항버스 6001<br>종로6가(JW메리어트 동대문) 하차</span></dd></div>
       <div><dt>주차</dt><dd>호텔 내 주차장 이용<br><span class="sub">입구가 좁으니 천천히 진입해 주세요</span><br><span class="todo">하객 무료 주차 시간 확인 후 기입</span></dd></div>
     </dl>
   </section>
@@ -419,13 +430,14 @@
   <section class="insert reveal" id="rsvp">
     <h2 class="sec-ko">참석 의사 전달</h2>
     <div class="sec-hair"></div>
-    <p class="body-text small">귀한 걸음 하시는 분들을 정성껏 모실 수 있도록<br>참석 여부를 미리 알려주시면 감사하겠습니다.</p>
+    <p class="body-text small">귀한 걸음 하시는 분들을 정성껏 모실 수 있도록<br>참석 여부를 미리 알려주시면<br>감사하겠습니다.</p>
     <form id="rsvpForm" novalidate>
       <div class="seg" data-name="side"><button type="button" data-v="신랑측" class="on">신랑측</button><button type="button" data-v="신부측">신부측</button></div>
       <label class="field"><span>성함</span><input name="name" maxlength="20" autocomplete="name" placeholder="성함을 입력해 주세요"></label>
       <div class="seg" data-name="attend"><button type="button" data-v="참석" class="on">참석할게요</button><button type="button" data-v="불참">마음만 전할게요</button></div>
       <div class="row attend-only"><span>인원 (본인 포함)</span>
         <div class="stepper"><button type="button" data-d="-1" aria-label="인원 줄이기">−</button><output id="cnt">1</output><button type="button" data-d="1" aria-label="인원 늘리기">+</button></div></div>
+      <p class="field-lb attend-only">식사 여부</p>
       <div class="seg attend-only" data-name="meal"><button type="button" data-v="식사 예정" class="on">식사 예정</button><button type="button" data-v="식사 안 함">안 함</button><button type="button" data-v="미정">미정</button></div>
       <label class="field"><span>전하실 말씀 (선택)</span><textarea name="msg" maxlength="200" rows="3"></textarea></label>
       <button class="btn solid" type="submit" id="rsvpBtn">전달하기</button>
@@ -437,7 +449,7 @@
   <section class="insert reveal" id="gift">
     <h2 class="sec-ko">마음 전하실 곳</h2>
     <div class="sec-hair"></div>
-    <p class="body-text small">참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
+    <p class="body-text small">참석이 어려우신 분들을 위해<br>계좌번호를 안내드립니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
     <div class="accs">
       <div class="acc"><button type="button" class="acc-h">신랑측 계좌번호<i></i></button><div class="acc-b" id="accGroom"></div></div>
       <div class="acc"><button type="button" class="acc-h">신부측 계좌번호<i></i></button><div class="acc-b" id="accBride"></div></div>
