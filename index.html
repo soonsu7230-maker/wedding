@@ -57,10 +57,7 @@
   .caption .ko{font-family:var(--ko);font-weight:400;font-size:14.5px;letter-spacing:.12em;top:22px;color:var(--ink)}
   .caption.out span{opacity:0;transform:translateY(4px)}
 
-  #skip{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:5;
-    font-family:var(--en);font-size:11px;letter-spacing:.35em;color:var(--ink-soft);
-    background:none;border:0;padding:10px 6px 10px 12px;cursor:pointer;transition:opacity .6s}
-  #skip.hide{opacity:0;pointer-events:none}
+  #intro{cursor:pointer;-webkit-user-select:none;user-select:none}
 
   /* ---------- 카드 장면 ---------- */
   #scene{position:fixed;inset:0;z-index:3;overflow:hidden;
@@ -101,7 +98,7 @@
   .shown .content > *:nth-child(10){transition-delay:1.9s}
 
   .eyebrow{font-family:var(--en);font-size:11.5px;letter-spacing:.3em;padding-left:.3em;color:var(--ink);white-space:nowrap}
-  .asphodel{width:auto;height:min(34dvh,250px);margin:3dvh 0 .6dvh}
+  .asphodel{width:auto;height:min(34dvh,250px);max-width:100%;margin:3dvh 0 .6dvh}
   .flower-note{font-family:var(--en-it);font-style:italic;font-size:12px;letter-spacing:.06em;color:var(--ink-soft)}
   .flower-note b{font-family:var(--ko);font-style:normal;font-weight:300;font-size:10.5px;letter-spacing:.14em;margin-left:6px}
   .hair{width:36px;height:1px;background:#d8ccb4;margin:3.4dvh 0}   /* 포인트: 아이보리 골드 */
@@ -309,7 +306,6 @@
     </div>
   </div>
 </div>
-<button id="skip" type="button" aria-label="인트로 건너뛰기">SKIP</button>
 
 <!-- ===== 카드 장면 ===== -->
 <div id="scene" class="grain">
@@ -321,7 +317,7 @@
       <p class="eyebrow">THE WEDDING CELEBRATION</p>
 
       <!-- 아스포델 블라인드 엠보싱 (잉크 없이 종이만 눌러 올린 느낌) -->
-      <svg class="asphodel" viewBox="0 0 200 330" aria-label="아스포델 엠보싱">
+      <svg class="asphodel" viewBox="0 0 200 330" aria-label="아스포델과 노송나무 엠보싱">
         <defs>
           <!-- 조각식(스컬프티드) 엠보싱: 높이맵 → 실제 조명 계산 → 밝은 면/그늘만 종이에 얹음 -->
           <filter id="emboss" x="-8%" y="-6%" width="116%" height="112%" color-interpolation-filters="sRGB">
@@ -384,10 +380,6 @@
     <p class="day-sub">JW 메리어트 동대문 스퀘어 서울</p>
     <p class="cal-head">FEBRUARY 2027</p>
     <div class="cal" id="cal"></div>
-    <div class="dday">
-      <p class="dday-num" id="ddayNum"></p>
-      <p class="dday-text" id="ddayText"></p>
-    </div>
     <a class="btn" id="gcal" target="_blank" rel="noopener">캘린더에 추가하기</a>
   </section>
 
@@ -527,16 +519,16 @@
         ⚠ 임시 스케치입니다. 직접 찍은 사진을 따라 그려 이 d 값만 교체하세요.
      ---------------------------------------------------------------- */
   const SHAPES = [
-    { en:'ITAEWON', ko:'이태원, 써스티몽크 언덕',
+    { en:'ITAEWON', ko:'이태원에서 만남을 시작해',
       /* 가로등 · 은행나무 · 수풀 언덕 · 언덕 위 건물 · 옆 건물 루프탑 */
       d:'M20 230 L39.4 230 L39.4 150 C44 146 52 146 58 148 L58 150.5 C52 149.5 45 150.5 40.6 153 L40.6 230 L95 230 L95 190 C84 188 80 170 84 150 C86 128 92 110 96 100 C100 110 106 128 108 150 C112 170 108 188 97 190 L97 230 L106 230 C108 214 114 204 124 202 C126 190 136 184 146 187 C150 176 160 170 170 173 L170 120 L178 110 L232 104 L246 104 L246 168 C252 160 262 158 268 164 C272 154 284 152 290 160 L290 138 L324 138 L324 130 L328 130 L328 176 C332 190 334 206 336 218 L340 230' },
     { en:'SUKI', ko:'추운 겨울날, 수키 합류',
       /* 소파 팔걸이 위에 엎드린 수키 — 귀, 기울인 머리, 앞으로 늘어뜨린 두 앞발 */
       d:'M20 230 L300 230 C296 212 262 194 212 186 C211 198 212 214 210 222 C206 230 196 230 192 224 C189 212 189 192 190 176 C184 174 178 173 172 172 C173 182 172 192 168 199 C162 205 150 203 147 195 C142 184 139 166 137 152 C114 147 84 148 60 160 C44 170 38 200 38 230 C38 200 44 170 60 160 C58 146 68 128 86 120 C104 113 130 104 148 95 C152 88 157 79 163 71 L176 41 L189 67 C198 65 213 66 222 71 L246 61 C243 74 239 84 235 92 C238 104 237 118 229 131 C222 140 216 150 214 162 C213 172 212 180 212 186 C262 194 296 212 300 230 L340 230' },
-    { en:'CAMPUS', ko:'6 YEARS',
+    { en:'CAMPUS', ko:'6년간의 캠퍼스 생활',
       /* 계단식 테라스 · 새 모양 가로등 · 삼각탑(정점의 알바트로스) · 안쪽 면 · 기둥과 역원뿔 */
       d:'M20 230 L40 230 L40 206 L59.4 206 L59.4 152 C55 148 51 149 48 151 C52 146 57 146 60 149 C63 146 68 146 72 151 C69 149 65 148 60.6 152 L60.6 206 L70 206 L70 212 L92 212 L92 218 L110 218 L110 224 L128 224 L128 230 L142 230 L177.6 46 L178.6 40 L175 38.5 L178.8 38 L180 30 L181.2 38 L185 38.5 L181.4 40 L182.4 46 L218 230 L202 230 L180 80 L158 230 L172 230 L172 226 L180 226 L174 209 L179 209 L179 92 L181 92 L181 209 L186 209 L180 226 L188 226 L188 230 L232 230 L232 224 L250 224 L250 218 L268 218 L268 212 L290 212 L290 206 L299.4 206 L299.4 152 C295 148 291 149 288 151 C292 146 297 146 300 149 C303 146 308 146 312 151 C309 149 305 148 300.6 152 L300.6 206 L320 206 L320 230 L340 230' },
-    { en:'DONGDAEMUN', ko:'흥인지문, 그리고 우리의 날',
+    { en:'DONGDAEMUN', ko:'그리고 부부가 됩니다',
       d:'M20 230 L76 230 L76 184 L104 184 L104 170 C88 168 72 164 58 156 C80 156 100 150 116 144 L126 144 L126 132 C112 130 100 126 90 120 C120 118 150 106 180 102 C210 106 240 118 270 120 C260 126 248 130 234 132 L234 144 L244 144 C260 150 280 156 302 156 C288 164 272 168 256 170 L256 184 L284 184 L284 230 L202 230 L202 212 C202 200 192 194 180 194 C168 194 158 200 158 212 L158 230 L340 230' }
   ];
   const ARCH = { x:180, y:214 };   // 흥인지문 홍예(아치) 안쪽 — 여기로 들어갑니다
@@ -675,7 +667,7 @@
   const $ = id => document.getElementById(id);
   const intro = $('intro'), stage = $('stage'), scene = $('scene'), card = $('card');
   const capEl = $('caption'), capEn = $('cap-en'), capKo = $('cap-ko');
-  const dayEl = $('day'), dateEl = $('date'), counter = $('counter'), skipBtn = $('skip');
+  const dayEl = $('day'), dateEl = $('date'), counter = $('counter'), skipBtn = null;
 
   function setDay(n){ dayEl.textContent = 'DAY ' + Math.round(n).toLocaleString('en-US'); }
   async function swapCaption(i){
@@ -704,7 +696,6 @@
   function sizeSheet(){}   /* 카드 종이는 이제 CSS로 처리 */
 
   function showCard(){
-    skipBtn.classList.add('hide');
     intro.style.visibility = 'hidden';
     setClip(Math.hypot(innerWidth, innerHeight) + 50, innerWidth/2, innerHeight/2);
     scene.style.clipPath = scene.style.webkitClipPath = 'none';
@@ -718,7 +709,6 @@
     card.classList.remove('shown'); scene.classList.remove('scroll'); scene.scrollTop = 0;
     intro.style.visibility = 'visible'; stage.style.transform = ''; stage.style.opacity = 1;
     setClip(0, innerWidth/2, innerHeight/2);
-    skipBtn.classList.remove('hide');
     capEn.textContent = SHAPES[0].en; capKo.textContent = SHAPES[0].ko; capEl.classList.add('out');
     counter.style.opacity = 0; setDay(1); dateEl.textContent = '2017. 01. 22'; dateEl.style.transition = 'none'; dateEl.style.opacity = 1;
     WASH.forEach(w => { w.style.opacity = 0; w.removeAttribute('mask'); }); stopSnow(); sukiFace.style.opacity = 0;
@@ -779,7 +769,8 @@
     showCard();
   }
 
-  skipBtn.addEventListener('click', () => { run++; stopSnow(); showCard(); });
+  // 오프닝 그림을 터치하면 바로 본문으로
+  intro.addEventListener('click', () => { if (intro.style.visibility === 'hidden') return; run++; stopSnow(); showCard(); });
   $('replay').addEventListener('click', play);
   addEventListener('resize', sizeSheet);
 
@@ -824,7 +815,50 @@
       h += `<ellipse cx="${x}" cy="${y}" rx="${r*.78}" ry="${r*1.4}" fill-opacity=".7"/>`;
       h += `<path d="M${x} ${y + r*1.1} L${x} ${y - r*1.1}" stroke="#000" stroke-width=".7"/>`;
     });
-    g.innerHTML = h;
+    /* 노송나무(편백) — 신랑 탄생화(12월 31일). 납작하게 부채꼴로 갈라지는 비늘잎 + 동그란 솔방울 */
+    function hinoki(){
+      let o = '';
+      const LOW = .78;
+      o += '<path d="M150 326 C160 290 182 250 214 214 C236 190 252 162 262 128" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round"/>';
+      const lobe = (x, y, ang, len, w) => {
+        const ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len;
+        const mx = (x + ex) / 2, my = (y + ey) / 2, nx = -Math.sin(ang) * w, ny = Math.cos(ang) * w;
+        return { ex, ey, d: `M${x.toFixed(1)} ${y.toFixed(1)} Q${(mx + nx).toFixed(1)} ${(my + ny).toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)} Q${(mx - nx).toFixed(1)} ${(my - ny).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)} Z` };
+      };
+      // 납작한 잎줄기: 중심축 + 어긋나게 뻗는 납작한 곁가지(끝이 둥근 비늘잎 띠)
+      const strip = (x, y, ang, len, w) => { const L = lobe(x, y, ang, len, w); o += `<path d="${L.d}" fill-opacity="${LOW}"/>`; return L; };
+      const frond = (x, y, ang, len, sub) => {
+        const A = strip(x, y, ang, len, Math.max(2.8, len * 0.12));
+        o += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} L${A.ex.toFixed(1)} ${A.ey.toFixed(1)}" stroke="#000" stroke-width=".7" fill="none"/>`;
+        const n = sub ? 6 : 4;
+        for (let k = 0; k < n; k++){
+          const t = 0.18 + k * (0.72 / (n - 1)), side = k % 2 ? 1 : -1;
+          const bx = x + Math.cos(ang) * len * t, by = y + Math.sin(ang) * len * t;
+          const sl = len * (sub ? 0.46 : 0.4) * (1 - t * 0.55), sa = ang + side * 0.78;
+          const S = strip(bx, by, sa, sl, sl * 0.38);
+          if (sub && sl > 7){                                        // 큰 곁가지엔 한 번 더 갈라짐
+            const cx = bx + Math.cos(sa) * sl * 0.55, cy = by + Math.sin(sa) * sl * 0.55;
+            strip(cx, cy, sa - side * 0.7, sl * 0.5, sl * 0.2);
+          }
+        }
+      };
+      // [가지 시작 x, y, 방향(라디안), 길이, 잔가지 여부]
+      [[162, 294, -0.25, 40, 1], [172, 274, -1.45, 34, 1], [185, 254, -0.3, 38, 1], [199, 236, -1.5, 30, 1],
+       [215, 216, -0.4, 32, 1], [229, 198, -1.55, 24, 0], [243, 178, -0.5, 24, 0], [253, 156, -1.6, 18, 0], [262, 128, -1.15, 20, 0]]
+        .forEach(([x, y, a, l, sub]) => frond(x, y, a, l, sub));
+      // 솔방울: 짧은 꼭지 + 방패 모양 비늘 무늬
+      [[196, 276, 6], [208, 284, 5.4], [188, 289, 4.8]].forEach(([cx, cy, r]) => {
+        o += `<path d="M${cx - 2} ${cy - r} Q${cx - 6} ${cy - r - 8} ${cx - 14} ${cy - r - 12}" stroke="#000" stroke-width="1" fill="none"/>`;
+        o += `<circle cx="${cx}" cy="${cy}" r="${r}" fill-opacity=".86"/>`;
+        o += `<path d="M${cx - r * .75} ${cy} L${cx + r * .75} ${cy} M${cx} ${cy - r * .75} L${cx} ${cy + r * .75}" stroke="#000" stroke-width=".7" fill="none"/>`;
+        o += `<circle cx="${cx}" cy="${cy}" r="${(r * .22).toFixed(2)}"/>`;
+      });
+      return o;
+    }
+    /* 하나의 문장처럼: 아스포델은 살짝 왼쪽으로, 노송나무는 오른쪽으로 — 밑동에서 만남 */
+    const svgEl = g.ownerSVGElement; if (svgEl) svgEl.setAttribute('viewBox', '0 0 300 330');
+    g.innerHTML = `<g transform="translate(142 326) rotate(-6) scale(.96) translate(-100 -326)">${h}</g>`
+      + `<g transform="translate(152 326) scale(1.14) translate(-150 -326)">${hinoki()}</g>`;
   })();
 
   sizeSheet();
@@ -896,10 +930,6 @@
       h += `<div class="${cls.join(' ')}">${d}</div>`;
     }
     $('cal').innerHTML = h;
-    const left = Math.round((wDay - todayUTC) / 86400e3);
-    if (left > 0){ $('ddayNum').textContent = 'D-' + left; $('ddayText').innerHTML = `동주 <span style="color:#c9a77c">♥</span> 신영의 결혼식이 <b>${left}일</b> 남았습니다`; }
-    else if (left === 0){ $('ddayNum').textContent = 'D-DAY'; $('ddayText').innerHTML = '<b>오늘, 저희 결혼합니다</b>'; }
-    else { $('ddayNum').textContent = 'THANK YOU'; $('ddayText').innerHTML = '함께해 주셔서 감사합니다'; }
     const q = new URLSearchParams({ action:'TEMPLATE', text:'신동주 ♥ 김신영 결혼식', dates:'20270221T040000Z/20270221T060000Z',
       location:'JW 메리어트 동대문 스퀘어 서울 (' + CONFIG.address + ')', details:'저희의 시작을 함께해 주세요.\n' + location.href.split('#')[0] });
     $('gcal').href = 'https://calendar.google.com/calendar/render?' + q.toString();
