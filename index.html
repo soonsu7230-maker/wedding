@@ -129,8 +129,9 @@
   /* ================= 본편: 청첩장 세트(인서트 카드) ================= */
   /* 섹션은 같은 종이 위에 이어서 — 사이에는 작은 장식 하나만 */
   .insert{position:relative;text-align:center;padding:64px 36px 56px}
-  .insert::before{content:'';position:absolute;top:0;left:50%;width:5px;height:5px;transform:translate(-50%,-50%) rotate(45deg);
-    border:1px solid #cdb990;background:#fdfdfc}
+  /* 섹션 사이 표식: 수막새(연꽃무늬 둥근 기와 끝) */
+  .insert::before,.foot::before{content:'';position:absolute;top:0;left:50%;width:17px;height:17px;transform:translate(-50%,-50%);
+    background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-12%20-12%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23b39c72%22%20stroke-width%3D%22.95%22%3E%3Ccircle%20r%3D%2210.3%22%20fill%3D%22%23fdfdfc%22/%3E%3Ccircle%20r%3D%228.6%22%20stroke-width%3D%22.45%22/%3E%3Cpath%20transform%3D%22rotate%280%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Cpath%20transform%3D%22rotate%2860%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Cpath%20transform%3D%22rotate%28120%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Cpath%20transform%3D%22rotate%28180%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Cpath%20transform%3D%22rotate%28240%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Cpath%20transform%3D%22rotate%28300%29%22%20d%3D%22M0%20-1.7C1.8%20-3%201.9%20-5.6%200%20-7.1C-1.9%20-5.6%20-1.8%20-3%200%20-1.7Z%22%20fill%3D%22%23b39c72%22%20fill-opacity%3D%22.2%22/%3E%3Ccircle%20r%3D%221.25%22%20fill%3D%22%23b39c72%22%20stroke%3D%22none%22/%3E%3C/svg%3E") center/contain no-repeat}
   .reveal{opacity:0;transform:translateY(10px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   .sec-en{font-family:var(--en);font-size:12px;letter-spacing:.4em;padding-left:.4em;color:var(--ink-soft)}
@@ -261,7 +262,7 @@
 
   /* 맺음 */
   .foot{position:relative;text-align:center;padding:56px 24px 64px}
-  .foot::before{content:'';position:absolute;top:0;left:50%;width:5px;height:5px;transform:translate(-50%,-50%) rotate(45deg);border:1px solid #cdb990;background:#fdfdfc}
+  
   .foot .ty{font-family:var(--en);font-size:13px;letter-spacing:.42em;padding-left:.42em;color:var(--ink-soft)}
   .foot .nm{font-size:14px;letter-spacing:.22em;margin-top:12px}
   .foot-btns{display:flex;gap:8px;justify-content:center;margin-top:26px}
