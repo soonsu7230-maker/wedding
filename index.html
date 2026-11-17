@@ -304,9 +304,8 @@
   .rc-sel::after{content:'';position:absolute;right:2px;top:50%;width:4px;height:4px;margin-top:-4px;border-right:1px solid #8f887e;border-bottom:1px solid #8f887e;transform:rotate(45deg);pointer-events:none}
   .rc-sel select:focus{outline:none;border-bottom-color:#a3845a}
   .rc-msg{margin-top:4px}
-  .rc-send{display:inline-block;margin-top:8px;padding:12px 30px;background:transparent;border:0;border-top:1px solid #2a2622;border-bottom:1px solid #2a2622;
-    font-family:var(--ko);font-size:13.5px;letter-spacing:.42em;text-indent:.42em;color:var(--ink);cursor:pointer;border-radius:0;-webkit-appearance:none;transition:opacity .3s}
-  .rc-send:active{opacity:.55}
+  .rc-send{margin-top:4px}
+  .rc-cap-top{margin:0 0 10px}
 </style>
 </head>
 <body class="grain">
@@ -468,8 +467,8 @@
         <button type="button" data-v="참석" class="on">기쁜 마음으로 참석하겠습니다</button>
         <button type="button" data-v="불참">아쉽지만 마음으로 함께하겠습니다</button></div>
       <div class="rc-count attend-only">본인 포함 <label class="rc-sel"><select id="cntSel" aria-label="참석 인원"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></label> 명</div>
-      <div class="rc-field rc-msg"><textarea name="msg" maxlength="200" rows="2" aria-label="전하실 말씀"></textarea><span class="rc-cap">전하실 말씀</span></div>
-      <button class="rc-send" type="submit" id="rsvpBtn">회신 보내기</button>
+      <div class="rc-field rc-msg"><span class="rc-cap rc-cap-top">전하실 말씀</span><textarea name="msg" maxlength="200" rows="2" aria-label="전하실 말씀"></textarea></div>
+      <button class="btn btn-sm rc-send" type="submit" id="rsvpBtn">의사 전하기</button>
       <p class="form-note" id="rsvpNote"></p>
     </form>
   </section>
