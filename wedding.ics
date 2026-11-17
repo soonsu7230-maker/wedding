@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SDJ KSY//Wedding Invitation//KO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:sdj-ksy-wedding-20270221@soonsu7230-maker.github.io
+DTSTAMP:20261117T000000Z
+DTSTART:20270221T040000Z
+DTEND:20270221T060000Z
+SUMMARY:신동주 ♥ 김신영 결혼식
+LOCATION:JW 메리어트 동대문 스퀘어 서울 B1층 그랜드 볼룸
+ \, 서울 종로구 청계천로 279
+DESCRIPTION:저희의 시작을 함께해 주세요.\nhttps://soonsu7230-ma
+ ker.github.io/wedding/
+URL:https://soonsu7230-maker.github.io/wedding/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일은 동주와 신영의 결혼식입니다
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:오늘 오후 1시\, 동주와 신영의 결혼식입니다
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

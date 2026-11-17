@@ -927,9 +927,35 @@
       h += `<div class="${cls.join(' ')}">${d}</div>`;
     }
     $('cal').innerHTML = h;
-    const q = new URLSearchParams({ action:'TEMPLATE', text:'신동주 ♥ 김신영 결혼식', dates:'20270221T040000Z/20270221T060000Z',
-      location:'JW 메리어트 동대문 스퀘어 서울 B1층 그랜드 볼룸 (' + CONFIG.address + ')', details:'저희의 시작을 함께해 주세요.\n' + location.href.split('#')[0] });
-    $('gcal').href = 'https://calendar.google.com/calendar/render?' + q.toString();
+  })();
+
+  /* 캘린더에 추가하기 — 휴대폰 기본 캘린더로
+     · 아이폰: 일정 파일(wedding.ics, 하루 전·3시간 전 알림 포함) → '캘린더에 추가' 화면
+       카카오톡 안에서는 일정 파일을 못 열어서 사파리로 넘겨 엶
+     · 안드로이드: 기본 캘린더 앱의 '새 일정' 화면을 내용이 채워진 채로 엶 (안 되면 일정 파일로)
+     · 그 밖(PC 등): 일정 파일 */
+  (function addToCalendar(){
+    const btn = $('gcal');
+    const ICS = new URL('wedding.ics', location.href.split('#')[0]).href;
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const inKakao = /KAKAOTALK/i.test(ua);
+    const enc = encodeURIComponent;
+    const androidIntent = 'intent://#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.item/event'
+      + ';S.title=' + enc('신동주 ♥ 김신영 결혼식')
+      + ';S.eventLocation=' + enc('JW 메리어트 동대문 스퀘어 서울 B1층 그랜드 볼룸, ' + CONFIG.address)
+      + ';S.description=' + enc('저희의 시작을 함께해 주세요. ' + location.href.split('#')[0])
+      + ';l.beginTime=1803182400000;l.endTime=1803189600000;B.allDay=false'
+      + ';S.browser_fallback_url=' + enc(ICS) + ';end';
+    btn.removeAttribute('target');
+    btn.href = ICS;
+    btn.setAttribute('download', 'wedding.ics');
+    const target = isAndroid ? androidIntent
+                 : isIOS ? (inKakao ? 'kakaotalk://web/openExternal?url=' + enc(ICS) : ICS)
+                 : null;                                   // PC 등은 일정 파일을 그대로 받음
+    btn.dataset.target = target || 'download';
+    btn.addEventListener('click', e => { if (target){ e.preventDefault(); location.href = target; } });
   })();
 
   /* 갤러리 + 크게 보기 */
